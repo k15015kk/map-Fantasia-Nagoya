@@ -1,13 +1,17 @@
 import ReactMapGL from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import DeckGL from "@deck.gl/react";
-import { GeoJsonLayer } from "@deck.gl/layers";
 import { useEffect, useState } from 'react';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { load } from "@loaders.gl/core";
+import { JSONLoader } from "@loaders.gl/json";
+import TripTrackLayer from "./TripTrackLayer";
+import BusStopIconLayer from "./BusStopIconLayer";
 
 const Map = () => {
 
-const [jsonData, setJsonData] = useState([])
+  const [travelTrackJsonData, setTravelTrackJsonData] = useState(0)
+  const [busStopJsonData, setBusStopJsonData] = useState(0)
 
   const [viewState, setViewState] = useState({
     longitude: 139.828256420331,
@@ -16,26 +20,30 @@ const [jsonData, setJsonData] = useState([])
   });
 
   useEffect(() => {
-    const data = require("../../data/LineString_Fantasia_Nagoya_2_Ebina_to_Nishi-Funabashi.json");
-    setJsonData(data);
+
+    const dataLoad= async() => {
+      const travel_track_res = await load("./data/LineString_Fantasia_Nagoya_2_Ebina_to_Nishi-FUnabashi.geojson", JSONLoader);
+      setTravelTrackJsonData(travel_track_res)
+
+      const bus_stop_res = await load("./data/Point_Fantasia_Nagoya_2_BusStop.geojson", JSONLoader);
+      setBusStopJsonData(bus_stop_res)
+    }
+
+    dataLoad();
   }, []);
 
-
-  const geoJsonLayer = new GeoJsonLayer({
-    id: "geojson",
-    data: jsonData,
-    lineWidthUnits: 'pixels',
-    getLineWidth: 4,
-    getLineColor: [255, 241, 118, 255],
-  });
 
   return (
     <DeckGL
       initialViewState={viewState}
-      layers={[geoJsonLayer]}
+      layers={[
+        TripTrackLayer({travelTrackJsonData}),
+        BusStopIconLayer({busStopJsonData})
+      ]}
       style={{ width: "100vw", height: "100vh" }}
       controller={true}
       onViewStateChange={(event) => setViewState(event.viewState)}
+      getTooltip={ ({object}) => object && `${object.properties.name}` }
     >
       <ReactMapGL mapStyle={process.env.MAP_URL} mapLib={maplibregl} />
     </DeckGL>

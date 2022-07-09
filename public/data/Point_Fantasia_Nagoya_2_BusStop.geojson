@@ -1,0 +1,89 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.39985054135465,
+                    35.432426735200366
+                ]
+            },
+            "properties": {
+                "name": "EXPASA Ebina",
+                "type": "Operation Stop"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.6248169663241,
+                    35.46463637700292
+                ]
+            },
+            "properties": {
+                "name": "Yokohama Station (YCAT)",
+                "type": "Bus Stop"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.77944237053484,
+                    35.62661532503026
+                ]
+            },
+            "properties": {
+                "name": "Odaiba",
+                "type": "Bus Stop"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.87662373717268,
+                    35.63287905285479
+                ]
+            },
+            "properties": {
+                "name": "Tokyo Disneyland",
+                "type": "Bus Stop"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.89024277011845,
+                    35.6259284684356
+                ]
+            },
+            "properties": {
+                "name": "Tokyo DisneySea",
+                "type": "Bus Stop"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.958426960199,
+                    35.708370758180806
+                ]
+            },
+            "properties": {
+                "name": "Nishi-FUnabashi Station",
+                "type": "Bus Stop"
+            }
+        }
+    ]
+}
