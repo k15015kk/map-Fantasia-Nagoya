@@ -7,6 +7,7 @@ import { load } from "@loaders.gl/core";
 import { JSONLoader } from "@loaders.gl/json";
 import TripTrackLayer from "./TripTrackLayer";
 import BusStopIconLayer from "./BusStopIconLayer";
+import NameTextLayer from "./NameTextLayer";
 
 const Map = () => {
 
@@ -38,7 +39,8 @@ const Map = () => {
       initialViewState={viewState}
       layers={[
         TripTrackLayer({travelTrackJsonData}),
-        BusStopIconLayer({busStopJsonData})
+        BusStopIconLayer({busStopJsonData}),
+        NameTextLayer({busStopJsonData})
       ]}
       style={{ width: "100vw", height: "100vh" }}
       controller={true}
